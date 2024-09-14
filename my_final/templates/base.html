@@ -1,0 +1,366 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  <title> Blood Donation Hub</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  
+  {% load static %}
+ 
+  <style>
+    /* Your custom styles here */
+
+    /* Navbar Styles */
+    @font-face {
+    font-family: "Poppins";
+    src: url('my_final/fonts/Poppins-Regular.ttf') format("truetype");
+    }
+
+    @font-face {
+    font-family: "Poppins";
+    src: url('my_final/fonts/Poppins-Regular.ttf') format("truetype");
+    font-weight: 800;
+    }
+    .navbar {
+      position: fixed;
+      font-family: "Poppins", sans-serif;
+      top:0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #333;
+      }
+     .collapse{
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+      }
+     .navbar-dark .navbar-brand {
+      color: white;
+      }
+     .navbar-brand {
+      margin-left: 1%; /* Center the brand part */
+      transform: translateX(-10%); /* Centering trick */
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #202020;
+      transition: transform 0.3s ease;
+      }
+      .navbar-brand:hover {
+        transform: translateX(-10%) scale(1.1);
+      }
+      .nav-item {
+      color: #6c757d;
+     }
+      .navbar-nav{
+      transform: translateX(75%); /* Centering trick */
+      font-family: "Poppins", sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #202020;
+      gap: 2rem;
+    }
+    .navbar a.nav-link {
+      position: relative;
+      color: #6c757d; /* Set the default text color */
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar a.nav-link:hover {
+      
+      transform: translateX(1%) scale(1.1);
+    }
+    .btn{
+      border-radius: 20px;
+      font-family: "Poppins", sans-serif;
+    }
+    
+/* Optional: To remove the underline from active links */
+    .navbar a.nav-link.active {
+      border-bottom: none;
+    }
+    /* Burger Icon Styles */
+    .burger-icon {
+      cursor: pointer;
+      position: fixed;
+      left: 10px;
+      top: 60px; /* Adjusted position below the navbar */
+      z-index: 1200;
+    }
+
+    .burger-icon .bar {
+      width: 30px;
+      height: 3px;
+      background-color: #6c757d;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+
+    .change .bar:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .change .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .change .bar:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 60px;
+      height: 100%;
+      width: 250px;
+      background-color: white;
+      padding-top: 20px;
+      transition: 0.3s;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .sidebar a {
+      padding: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: black;
+    }
+
+    @media (min-width: 1920px) {
+      .sidebar {
+        display: none;
+      }
+
+      .burger-icon {
+        display: none;
+      }
+    }
+
+    /* Center Content Styles */
+    .center-content {
+       /* Adjusted margin for centering */
+      margin-top: 65px;
+      text-align: center;
+    }
+
+    .navbar-collapse {
+      justify-content: center; /* Center the navbar links */
+      
+    }
+  .registration-form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-box {
+      border: 1px solid #ccc;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      background-color: #fff;
+      margin-bottom: 100px  ;
+    }
+
+    .form-title {
+      text-align: center;
+  
+    }
+
+    .registration-form {
+      margin-top: 50px; /* Adds some space between title and form */
+  
+    }
+    .login-form-box {
+      border: 1px solid #ccc;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      background-color: #fff;
+      margin-bottom: 100px  ;
+      justify-content: center;
+      margin-left: 200px;
+    }
+    .login-form {
+      text-align: center;
+    }
+
+    .login-fields {
+      margin-bottom: 15px; /* Add some space between fields */
+    }
+    .patient-form-box {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px; /* Adjust width as needed */
+      margin: 0 auto; /* Center the form horizontally */
+      background-color: #fff;
+      margin-top: 50px; /* Optional: Add space from the top */
+      justify-content: center;
+      text-align: center;
+    }
+    footer {
+      border-top: 2px solid black;
+      margin-top: 100px;
+      background-color:none;
+      padding: 30px 0;
+      color: white;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      max-width: 1200px;
+      
+      margin: 0 auto;
+    }
+
+    .about-us,
+    .contact-us {
+      margin-top: 20px;
+
+      width: 45%;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color:  #dc3545;
+    }
+
+    p {
+      font-size: 1em;
+      color: #555;
+    }
+    .brand-pic {
+      width: 55px; 
+      height: 37px; 
+    }
+   
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      {% block logo %}<img src="{% static 'brand1.png' %}" class="brand-pic" alt="Brand Image">{% endblock %}
+  </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+  
+        <li class="nav-item{% if request.path == '/' %} active{% endif %}">
+          <a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{% if user.is_donor %}{% url 'donpage' %}{% elif user.is_patient %}{% url 'patpage' %}{% else %}{% url 'donpage' %}{% endif %}">HOME</a>
+        </li>
+        
+        <li class="nav-item{% if request.path == '/available/' %} active{% endif %}">
+          <a class="nav-link{% if request.path == '/available/' %} active{% endif %}" href="{% url 'available' %}">BLOOD DONORS</a>
+        </li>
+        <li class="nav-item{% if request.path == '/allrequest/' %} active{% endif %}">
+          <a class="nav-link{% if request.path == '/allrequest/' %} active{% endif %}" href="{% url 'allrequest' %}">BLOOD REQUESTS</a>
+        </li>
+
+        <li class="nav-item{% if request.path == '#about-us' %} active{% endif %}">
+          <a class="nav-link{% if request.path == '#about-us' %} active{% endif %}" href="#about-us">ABOUT US</a>
+        </li>
+        <li class="nav-item{% if request.path == '#contact-us' %} active{% endif %}">
+          <a class="nav-link{% if request.path == '#contact-us' %} active{% endif %}" href="#contact-us">CONTACT US</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+<div class="burger-icon" onclick="toggleSidebar()">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<div class="container center-content">
+  {% block content %}
+  {% endblock %}
+</div>
+
+<div class="sidebar">
+  <div class="login-signup">
+
+  <a href =" {% url 'register' %}">Sign Up(Donor)</a>
+  <a href =" {% url 'patient' %}">Sign Up(Patient)</a>
+  <a href =" {% url 'login' %}">Login</a>
+  </div>
+  <a href="{% url 'profile' %}">Profile</a>
+  <a href="{% url 'updateprofile' %}">Edit Profile</a>
+  <a href="{% url 'changepassword' %}">Change Password</a>
+  <a href="{% url 'available' %}">Available Blood Donors</a>
+  <a href="{% url 'createreq' %}">Request For Blood</a>
+  <a href="{% url 'getrequest' %}">Edit Request</a>
+  <a href="{% url 'allrequest' %}">See All Request</a>
+
+  <a href="{% url 'login' %}">Logout</a>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="about-us" id="about-us">
+      <h2>About Us</h2>
+      <p>Welcome to Young Blood, a platform driven by a singular mission: to save lives through the power of voluntary blood donation. Founded by a team passionate about bridging the gap between donors and recipients, we strive to create a community where every drop of blood counts. Our platform serves as a catalyst for compassion, connecting donors with those in critical need. Committed to safety, convenience, and impact, we aim to make the act of giving blood an effortless and fulfilling experience for both donors and recipients alike. Join us in our lifesaving journey, where each donation is a beacon of hope in someone’s time of need.</p>
+    </div>
+    <div class="contact-us" id="contact-us">
+      <h2>Contact Us</h2>
+      <p>Email: youngblood@gmail.com<br>Phone: +01921212120</p>
+
+    </div>
+  </div>
+ 
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script>
+  function toggleSidebar() {
+    var sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = (sidebar.style.display === 'none' || sidebar.style.display === '') ? 'block' : 'none';
+    var burgerIcon = document.querySelector('.burger-icon');
+    burgerIcon.classList.toggle('change');
+   
+
+  }
+  // After successful login
+  document.addEventListener('DOMContentLoaded', function() {
+      const loginBtn = document.getElementById('loginBtn');
+      const signupBtn = document.getElementById('signupBtn');
+      
+      if (loginBtn && signupBtn) {
+        loginBtn.style.display = 'none';
+        signupBtn.style.display = 'none';
+      }
+    });
+</script>
+</body>
+</html>

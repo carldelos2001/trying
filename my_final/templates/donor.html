@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="bg-container"></div>
+<div class="center-box">
+ <h2>Welcome, {{ request.user.get_full_name }}!</h2>
+  
+  
+  <h3>List of Registered Patients</h3>
+  
+  {% if all_req %}
+  <h3 class="text-center">All Request</h3>
+  <table class="table table-sm table-bordered">
+    <tr class="table-secondary">
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Blood Group</th>
+      <th>Donation Date</th>
+      <th>Location</th>
+    </tr>
+    {% for i in all_req %}
+      <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.phone}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.blood_group}}</td>
+        <td>{{i.date_of_donation}}</td>
+        <td>{{i.donation_location}} | {{i.district}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <h2>No Request Available</h2>
+{% endif %}
+</div>
+
+<style>
+  .brand-pic {
+    width: 55px; 
+    height: 37px; 
+  }
+  .center-box {
+    max-width: 80%;
+    padding: 50px;
+    background-color: none;
+    border-radius: 10px;
+    color: black;
+    opacity: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  footer {
+    border-top: 2px solid black;
+    margin-top: 550px;
+    background-color: none;
+    padding: 30px 0;
+  }
+  .bg-container {
+    background-image: url("{% static 'bakgrawn.jpg' %}");
+    background-size: 150%;
+    background-position: center;
+    height: 89vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    opacity: 0.1;
+    z-index: -1;
+  }
+</style>
+{% endblock %}
+
+{% block logo %}
+  <img src="{% static 'brand1.png' %}" class="brand-pic" alt="Other Logo">
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-left: 20px;">
+    <div style="border: 1px solid #ccc; padding: 20px; max-width: 600px; width: 100%; border-radius: 15px;">
+      <h2>Create Request</h2>
+      <p></p>
+      <form action="." method="POST">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="submit" class="btn btn-danger btn-sm" value="CREATE">
+      </form>
+    </div>
+  </div>
+  <style>
+    .btn{
+      border-radius: 20px;
+    }
+  </style>
+{% endblock %}
+
+{% block logo %}
+    <img src="{% static 'brand1.png' %}" class="brand-pic" alt="Other Logo">
+{% endblock %}

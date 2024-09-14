@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+  <div class="registration-form-container">
+    <div class="form-box">
+      <h2 class="form-title">Donor Registration</h2>
+  
+      <form action="." method="POST" enctype="multipart/form-data" class="registration-form">
+        {% csrf_token %}
+        <table>
+          {{ form1.as_table }}
+          {{ form2.as_table }}
+        </table>
+        <input type="submit" class="btn btn-danger btn-sm" value="SIGN UP">
+        <p style="text-align: center; color: #333;">
+          Already have an account? <a style="text-align: center; color: #dc3545;" 
+             href="{% url 'login' %}">Login</a>
+           </p>
+      </form>
+    </div>  
+  </div>
+  <style>
+    h2 {
+      color: #dc3545; /* Use a red color for headings */
+    }
+    .btn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Apply border radius to input fields */
+    .registration-form input[type="text"],
+    .registration-form input[type="password"],
+    .registration-form input[type="email"],
+    .registration-form select {
+      border-radius: 20px;
+      /* Add other styles as needed */
+    }
+  </style>
+{% endblock %}
+
+{% block logo %}
+    <img src="{% static 'brand1.png' %}" class="brand-pic" alt="Other Logo">
+{% endblock %}

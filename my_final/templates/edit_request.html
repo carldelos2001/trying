@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h2>Your Requests</h2>
+  {% if user_requests %}
+    <ul>
+      {% for user_request in user_requests %}
+        <li><a href="{% url 'edit_request' %}?request_id={{ user_request.id }}">{{ user_request.some_field }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No requests found. <a href="{% url 'create_request' %}">Create a request</a></p>
+  {% endif %}
+
+  <form action="." method="POST">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <input type="submit" class="btn btn-sm btn-danger" value="Update">
+  </form>
+
+
+
+
+
+  <style>
+    .btn {
+      border-radius: 20px;
+    }
+    footer {
+      border-top: 2px solid black;
+      margin-top: 150px;
+      background-color:none;
+      padding: 30px 0;
+    }
+  
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      max-width: 1200px;
+      
+      margin: 0 auto;
+    }
+  
+    .about-us,
+    .contact-us {
+      width: 45%;
+      margin-bottom: 20px;
+    }
+  
+    h2 {
+      font-size: 1.5em;
+      color:  #dc3545;
+    }
+  
+    p {
+      font-size: 1em;
+      color: #555;
+    }
+  </style>
+{% endblock %}
+
+{% block logo %}
+    <img src="{% static 'brand1.png' %}" class="brand-pic" alt="Other Logo">
+{% endblock %}

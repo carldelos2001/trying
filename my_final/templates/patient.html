@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+  </div>
+  <div class="bg-container"></div>
+<div class="center-box">
+  <h2>Welcome, {{ request.user.get_full_name }}!</h2>
+    <!-- Add specific content for the patient dashboard -->
+    <p>If someone accepts your requests the list goes here:</p>
+    <!-- Add links or buttons for patient-related actions -->
+  
+  
+  
+</div>
+
+  <style>
+    footer {
+      border-top: 2px solid black;
+      margin-top: 300px;
+      background-color:none;
+      padding: 30px 0;
+    }
+  
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      max-width: 1200px;
+      
+      margin: 0 auto;
+    }
+  
+    .about-us,
+    .contact-us {
+      width: 45%;
+      margin-bottom: 20px;
+    }
+  
+    h2 {
+      font-size: 1.5em;
+      color: #dc3545;
+    }
+  
+    p {
+      font-size: 1em;
+      color: #555;
+    }
+    .bg-container {
+    background-image: url("{% static 'bakgrawn.jpg' %}");
+    background-size: 150%;
+    background-position: center;
+    height: 89vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    opacity: 0.1;
+    z-index: -1;
+    }
+    .center-box {
+    max-width: 80%;
+    padding: 50px;
+    background-color: none;
+    border-radius: 10px;
+    color: black;
+    opacity: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    }
+  </style>
+{% endblock %}
+
+{% block logo %}
+    <img src="{% static 'brand1.png' %}" class="brand-pic" alt="Other Logo">
+{% endblock %}

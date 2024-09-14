@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 offset-md-5">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h2 class="text-center mb-4">Patient Registration</h2>
+            <form method="POST">
+              {% csrf_token %}
+              {{ form1.as_table }}
+              {{ form3.as_table }}
+              <button type="submit" class="btn btn-danger btn-block mt-3">Register</button>
+              <p style="text-align: center; color: #333;">
+               Already have an account? <a style="text-align: center; color: #dc3545;" 
+                  href="{% url 'login' %}">Login</a>
+                </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+     
+    /* Add your additional CSS styles here */
+    body {
+      background-color: #f8f9fa; /* Use a light background color */
+    }
+
+    .container {
+      margin-top: 50px;
+      border-radius: 20px;
+    }
+    .input-card{
+      border-radius: 20px;
+    }
+    
+    .card {
+      border: 1px solid #ced4da; /* Add a border to the card */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+      border-radius: 20px;
+    }
+
+    h2 {
+      color: #dc3545; /* Use a red color for headings */
+    }
+
+    button {
+      background-color: #dc3545; /* Use red color for the button */
+      color: #fff;
+      border-radius: 20px;
+    }
+  
+  </style>
+{% endblock %}
+
+{% block logo %}
+  <img src="{% static 'brand1.png' %}" class="brand-pic" alt="Logo">
+{% endblock %}
+
+
